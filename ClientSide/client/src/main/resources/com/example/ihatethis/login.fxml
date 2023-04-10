@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="loginPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ihatethis.LoginController">
+   <children>
+      <Label layoutX="181.0" layoutY="201.0" text="Password" />
+      <TextField fx:id="nameTextField" layoutX="248.0" layoutY="153.0" prefHeight="26.0" prefWidth="172.0" />
+      <Button fx:id="loginBtn" layoutX="367.0" layoutY="244.0" mnemonicParsing="false" onAction="#userLoggedIn" text="Sign in" />
+      <PasswordField layoutX="247.0" layoutY="197.0" prefHeight="26.0" prefWidth="172.0" />
+      <Label layoutX="179.0" layoutY="157.0" text="Username" />
+      <Text layoutX="179.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOKS &amp; NOBLE">
+         <font>
+            <Font name="Georgia" size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
