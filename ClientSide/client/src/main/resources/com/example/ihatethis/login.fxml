@@ -15,7 +15,7 @@
       <Button fx:id="loginBtn" layoutX="367.0" layoutY="244.0" mnemonicParsing="false" onAction="#userLoggedIn" text="Sign in" />
       <PasswordField layoutX="247.0" layoutY="197.0" prefHeight="26.0" prefWidth="172.0" />
       <Label layoutX="179.0" layoutY="157.0" text="Username" />
-      <Text layoutX="179.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOKS &amp; NOBLE">
+      <Text layoutX="179.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEVOS &amp; NOBLE">
          <font>
             <Font name="Georgia" size="30.0" />
          </font>

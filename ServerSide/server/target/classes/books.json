@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Things Fall Apart",
+    "author": "Chinua Achebe",
+    "pages": "209",
+    "year": "1958",
+    "summary": "Things Fall Apart is the debut novel by Nigerian author Chinua Achebe, first published in 1958. It depicts pre-colonial life in the southeastern part of Nigeria and the invasion by Europeans during the late 19th century."
+  },
+  {
+    "title": "Fairy tales",
+    "author": "Hans Christian Andersen",
+    "pages": "784",
+    "year": "1836",
+    "summary": "Andersen's fairy tales, consisting of 156 stories across nine volumes, have been translated into more than 125 languages. They have become culturally embedded in the West's collective consciousness, readily accessible to children but presenting lessons of virtue and resilience in the face of adversity for mature readers as well"
+  },
+  {
+    "title": "The Divine Comedy",
+    "author": "Dante Alighieri",
+    "pages": "928",
+    "year": "1315",
+    "summary": "The Divine Comedy is an Italian narrative poem by Dante Alighieri, begun c. 1308 and completed around 1321, shortly before the author's death. It is widely considered the pre-eminent work in Italian literature and one of the greatest works of world literature."
+  },
+  {
+    "title": "Diary of a Wimpy Kid",
+    "author": "Jeff Kinney",
+    "pages": "160",
+    "year": "2007",
+    "summary": "Diary of a Wimpy Kid is an American children's book series and media franchise created by author and cartoonist Jeff Kinney. The series follows Greg Heffley, a middle-schooler who illustrates his daily life in a diary. Kinney spent eight years working on the book before showing it to a publisher."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "pages": "223",
+    "year": "1997",
+    "summary": "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling."
+  }
+]

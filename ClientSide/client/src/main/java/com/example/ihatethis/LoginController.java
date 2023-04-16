@@ -32,6 +32,14 @@ public class LoginController {
         Stage window = (Stage) loginBtn.getScene().getWindow();
         window.setScene(new Scene(root));
 
+        try {
+            new Client().setUpNetworking();
+            Client client = new Client();
+            client.sendToServer("LOGGED IN " + username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

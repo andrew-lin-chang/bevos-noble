@@ -1,15 +1,29 @@
 package backend;
 
+import backend.models.Book;
 import com.google.gson.Gson;
+import org.bson.Document;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Observable;
 
 class Server extends Observable {
+  public static Server server;
 
   public static void main(String[] args) {
-    new Server().runServer();
+    Mongo.setupDB();
+    server = new Server();
+    server.resetCatalog();
+    server.runServer();
+
   }
 
   private void runServer() {
@@ -65,4 +79,29 @@ class Server extends Observable {
     }
   }
 
+  public void resetCatalog() {
+    Mongo.catalog.deleteMany(new Document());
+
+    try {
+      String bookJson = readFileAsString("src/main/resources/books.json");
+      Gson gson = new Gson();
+
+      Book[] catalog = gson.fromJson(bookJson, Book[].class);
+
+      //inserts all books to catalog collection
+      for (Book book : catalog) {
+        Mongo.catalog.insertOne(book.toDocument());
+      }
+
+      System.out.println("Catalog Reset");
+
+    } catch(Exception e) {
+      System.out.println("Error: " + e);
+    }
+  }
+
+  public static String readFileAsString(String file)throws Exception
+  {
+    return new String(Files.readAllBytes(Paths.get(file)));
+  }
 }

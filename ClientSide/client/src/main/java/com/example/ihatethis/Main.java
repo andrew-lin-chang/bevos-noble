@@ -15,7 +15,7 @@ public class Main extends Application {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Parent root = FXMLLoader.load((getClass().getResource("login.fxml")));
         Scene scene = new Scene(root);
-        stage.setTitle("422C Final Project");
+        stage.setTitle("Bevos & Noble");
         stage.setScene(scene);
         stage.show();
     }
