@@ -4,19 +4,15 @@ import backend.models.Book;
 import com.google.gson.Gson;
 import org.bson.Document;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Observable;
 
 class Server extends Observable {
   public static Server server;
+  public static Mongo mongodb = new Mongo();
 
   public static void main(String[] args) {
     Mongo.setupDB();
@@ -57,21 +53,25 @@ class Server extends Observable {
     try {
       String temp = "";
       switch (message.type) {
-        case "upper":
-          temp = message.input.toUpperCase();
+        case "login":
+          //temp = message.input.toUpperCase();
           break;
-        case "lower":
-          temp = message.input.toLowerCase();
+        case "signup":
+          //temp = message.input.toLowerCase();
           break;
-        case "strip":
-          temp = message.input.replace(" ", "");
+        case "checkoutBook":
+          //temp = message.input.replace(" ", "");
+          break;
+        case "returnBook":
+          break;
+        case "holdBook":
           break;
       }
       output = "";
-      for (int i = 0; i < message.number; i++) {
-        output += temp;
-        output += " ";
-      }
+//      for (int i = 0; i < message.number; i++) {
+//        output += temp;
+//        output += " ";
+//      }
       this.setChanged();
       this.notifyObservers(output);
     } catch (Exception e) {
@@ -80,6 +80,7 @@ class Server extends Observable {
   }
 
   public void resetCatalog() {
+    System.out.println("Resetting catalog...");
     Mongo.catalog.deleteMany(new Document());
 
     try {
@@ -88,12 +89,14 @@ class Server extends Observable {
 
       Book[] catalog = gson.fromJson(bookJson, Book[].class);
 
-      //inserts all books to catalog collection
+      //inserts all books to catalog collection and prints them out
       for (Book book : catalog) {
-        Mongo.catalog.insertOne(book.toDocument());
+        Mongo.catalog.insertOne(book);
+        addToInventory(book);
+        System.out.println(mongodb.findBook(book.getId()));
       }
-
       System.out.println("Catalog Reset");
+      System.out.println(mongodb.inventory);
 
     } catch(Exception e) {
       System.out.println("Error: " + e);
@@ -103,5 +106,15 @@ class Server extends Observable {
   public static String readFileAsString(String file)throws Exception
   {
     return new String(Files.readAllBytes(Paths.get(file)));
+  }
+
+  public void addToInventory(Book bookCopy) {
+    //add another copy to inventory
+    mongodb.inventory.put(bookCopy.getTitle(), mongodb.inventory.getOrDefault(bookCopy.getTitle(), 0) + 1);
+  }
+  public void removeFromInventory(Book bookCopy) {
+    //remove a copy from inventory
+    if(mongodb.inventory.get(bookCopy.getTitle()) == 0) return; //no negative # of copies
+    else mongodb.inventory.put(bookCopy.getTitle(), mongodb.inventory.get(bookCopy.getTitle()) - 1);
   }
 }

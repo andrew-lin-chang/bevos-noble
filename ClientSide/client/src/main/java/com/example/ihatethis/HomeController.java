@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class HomeController {
 
+    public static HomeController homeController;
     @FXML
     private MenuBar navBar;
     @FXML
@@ -24,6 +25,11 @@ public class HomeController {
 
     public void displayWelcome(String username) {
         welcomeMessage.setText("Welcome back, " + username);
+    }
+
+    public void displayCatalog() {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("book-list-item.fxml")));
     }
 
     public void logout(ActionEvent event) throws IOException {

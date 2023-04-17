@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.ihatethis.HomeController.homeController;
+
 public class LoginController {
 
     @FXML
@@ -26,7 +28,7 @@ public class LoginController {
         FXMLLoader loader = new FXMLLoader((getClass().getResource("home.fxml")));
         Parent root = loader.load();
 
-        HomeController homeController = loader.getController();
+        homeController = loader.getController();
         homeController.displayWelcome(username);
 
         Stage window = (Stage) loginBtn.getScene().getWindow();
