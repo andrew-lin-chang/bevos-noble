@@ -15,14 +15,6 @@ class Client {
   private PrintWriter toServer;
   private Scanner consoleInput = new Scanner(System.in);
 
-  public static void main(String[] args) {
-    try {
-      new Client().setUpNetworking();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   public void setUpNetworking() throws Exception {
     @SuppressWarnings("resource")
     Socket socket = new Socket(host, 4242);
